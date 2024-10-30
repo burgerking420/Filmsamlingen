@@ -26,5 +26,11 @@ public class MovieCollection {
         }
     return null;
     }
+
+    public void editMovie() {
+        if (movies.isEmpty()) {
+            System.out.println("There are no movies to edit..");
+        }
+    }
 }
 
