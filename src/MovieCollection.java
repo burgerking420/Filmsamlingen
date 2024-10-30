@@ -21,16 +21,24 @@ public class MovieCollection {
     public Movie searchMovie(String searchTerm) {
         for (Movie movie : movies) {
             if (movie.getTitle().toLowerCase().contains(searchTerm.toLowerCase())) {
-            return movie;
+                return movie;
             }
         }
-    return null;
+        return null;
     }
 
-    public void editMovie() {
-        if (movies.isEmpty()) {
+    public void editMovie(String searchTerm, Movie updatedMovie) {
+        Movie movie = searchMovie(searchTerm);
+        if (movie != null) {
+            movie.setTitle(updatedMovie.getTitle());
+            movie.setDirector(updatedMovie.getDirector());
+            movie.setYear(updatedMovie.getYear());
+            movie.setColored(updatedMovie.isColored());
+            movie.setLength(updatedMovie.getLength());
+            movie.setGenre(updatedMovie.getGenre());
+        } else {
             System.out.println("There are no movies to edit..");
         }
+
     }
 }
-

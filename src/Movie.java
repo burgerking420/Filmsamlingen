@@ -39,6 +39,30 @@ public Movie(String title, String director, int year, boolean colored, int lengt
         return genre;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setColored(boolean colored) {
+        this.colored = colored;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     @Override
     public String toString() {
     return "Title: " + title + ", Director: " + director + ", Year: " + year + ", Color:" + isColored() + ", Length: " + length + " minutes" + ", Genre: " + genre;
