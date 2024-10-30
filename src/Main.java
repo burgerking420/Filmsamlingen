@@ -11,7 +11,8 @@ public class Main {
             System.out.println("Welcome to your movie collection! Type a number on the menu to perform the action.");
             System.out.println("");
             System.out.println("1. Add a movie");
-            System.out.println("2. Exit");
+            System.out.println("2. Search for a movie");
+            System.out.println("3. Exit");
 
             String menuAction = scanner.next();
 
@@ -44,6 +45,26 @@ public class Main {
                 System.out.println("The movie has been added to your collection!");
 
             } else if (menuAction.equals("2")) {
+                scanner.nextLine();
+                boolean searching = true;
+                while (searching) {
+
+                    System.out.println("Search for a movie or type 'exit' to stop searching");
+                    String searchTerm = scanner.nextLine();
+                    Movie foundMovie = collection.searchMovie(searchTerm);
+
+                    if (searchTerm.equalsIgnoreCase("exit")) {
+                        searching = false;
+                    }
+
+                    if (foundMovie != null) {
+                        System.out.println("Movies found: " + foundMovie);
+                    } else {
+                        System.out.println("No movie in the collection matches your search");
+                    }
+                }
+
+            } else if (menuAction.equals("3")) {
                 running = false;
             } else {
                 System.out.println("Invalid command.");
