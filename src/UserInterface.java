@@ -6,7 +6,7 @@ public class UserInterface {
 
 public void start() {
     boolean running = true;
-
+ 
         while (running) {
         System.out.println("Welcome to your movie collection! Type a number on the menu to perform the action.");
         System.out.println("");
