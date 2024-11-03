@@ -8,6 +8,10 @@ public class MovieCollection {
         movies.add(movie);
     }
 
+    public ArrayList<Movie> getMovieCollectionList() {
+        return new ArrayList<>(movies);
+    }
+
     public void listMovies() {
         if (movies.isEmpty()) {
             System.out.println("There are currently no movies in this collection..");
