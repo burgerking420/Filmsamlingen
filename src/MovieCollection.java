@@ -1,4 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MovieCollection {
     private ArrayList<Movie> movies = new ArrayList<>();
@@ -21,6 +25,35 @@ public class MovieCollection {
             }
         }
     }
+
+    public void saveFile(String filename) {
+        try (PrintStream out = new PrintStream(filename)) {
+            for(Movie movie : movies) {
+                out.println(movie.getTitle() + "," + movie.getDirector() + "," + movie.getYear() + "," + movie.isColored() + "," + movie.getLength() + "," + movie.getGenre() + ".");
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+public void loadFile(String filename) {
+        try (Scanner fileScanner = new Scanner(new File(filename))) {
+            while (fileScanner.hasNext()) {
+               String[] data = fileScanner.nextLine().split(",");
+               if (data.length == 6) {
+                   String title = data[0];
+                   String director = data[1];
+                   int year = Integer.parseInt(data[2]);
+                   boolean colored = Boolean.parseBoolean(data[3]);
+                   int length = Integer.parseInt(data[4]);
+                   String genre = data[5];
+                   movies.add(new Movie(title, director, year, colored, length, genre));
+               }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("No movies found in the collection, time to get started!");
+        }
+}
 
     public Movie searchMovie(String searchTerm) {
         for (Movie movie : movies) {

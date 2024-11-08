@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -33,6 +32,7 @@ public class UserInterface {
     }
 
     public void start() {
+        collection.loadFile("samling.txt");
 
         while (running) {
             System.out.println("Welcome to your movie collection! Type a number on the menu to perform the action.");
@@ -41,7 +41,7 @@ public class UserInterface {
             System.out.println("2. Search for a movie");
             System.out.println("3. Edit a movie in the collection");
             System.out.println("4. Delete a movie in the collection");
-            System.out.println("5. Exit");
+            System.out.println("5. Exit / View a list of the movies in the collection");
 
             String menuAction = scanner.next();
 
@@ -181,7 +181,7 @@ public class UserInterface {
                     }
                 }
 
-            } else if (menuAction.equals("5")) {
+            } else if (menuAction.equals("6")) {
                 running = false;
             } else {
                 System.out.println("Invalid command.");
@@ -189,7 +189,7 @@ public class UserInterface {
 
             System.out.println("Movies in your collection:");
             collection.listMovies();
-
+            collection.saveFile("samling.txt");
         }
     }
 }
