@@ -181,7 +181,7 @@ public class UserInterface {
                     }
                 }
 
-            } else if (menuAction.equals("6")) {
+            } else if (menuAction.equals("5")) {
                 running = false;
             } else {
                 System.out.println("Invalid command.");
