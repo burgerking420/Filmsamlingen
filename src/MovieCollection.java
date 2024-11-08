@@ -21,6 +21,7 @@ public class MovieCollection {
         } else {
             for (Movie movie : movies) {
                 System.out.println(movie);
+
                 Collections.sort(movies, Comparator.naturalOrder());
             }
         }

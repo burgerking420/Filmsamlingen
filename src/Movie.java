@@ -1,4 +1,10 @@
+import java.util.Comparator;
+
 public class Movie implements Comparable<Movie>{
+
+public static Comparator<Movie> RATE_COMPARATOR = Comparator.comparing(Movie::getLength)
+        .thenComparing(Movie::getYear);
+
 private String title;
 private String director;
 private int year;
