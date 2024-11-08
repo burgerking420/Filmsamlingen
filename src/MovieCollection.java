@@ -1,8 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class MovieCollection {
     private ArrayList<Movie> movies = new ArrayList<>();
@@ -22,6 +21,7 @@ public class MovieCollection {
         } else {
             for (Movie movie : movies) {
                 System.out.println(movie);
+                Collections.sort(movies, Comparator.naturalOrder());
             }
         }
     }
@@ -35,6 +35,7 @@ public class MovieCollection {
             throw new RuntimeException(e);
         }
     }
+
 
 public void loadFile(String filename) {
         try (Scanner fileScanner = new Scanner(new File(filename))) {
@@ -74,6 +75,7 @@ public void loadFile(String filename) {
         return false;
     }
 
+
     public void editMovie(String searchTerm, Movie updatedMovie) {
         Movie movie = searchMovie(searchTerm);
         if (movie != null) {
@@ -86,6 +88,5 @@ public void loadFile(String filename) {
         } else {
             System.out.println("There are no movies to edit..");
         }
-
     }
 }

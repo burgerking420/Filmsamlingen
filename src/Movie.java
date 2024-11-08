@@ -1,4 +1,4 @@
-public class Movie {
+public class Movie implements Comparable<Movie>{
 private String title;
 private String director;
 private int year;
@@ -66,6 +66,12 @@ public Movie(String title, String director, int year, boolean colored, int lengt
     @Override
     public String toString() {
     return "Title: " + title + ", Director: " + director + ", Year: " + year + ", Color:" + isColored() + ", Length: " + length + " minutes" + ", Genre: " + genre;
+    }
+
+    @Override
+    public int compareTo(Movie o) {
+        int result = this.getTitle().compareTo(o.getTitle());
+        return result != 0 ? result : this.getGenre().compareTo(o.getGenre());
     }
 }
 

@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -7,6 +9,7 @@ public class UserInterface {
     boolean running = true;
     boolean searching;
     boolean editing;
+    boolean viewing;
 
     private int getInt(String prompt) {
         while (true) {
@@ -41,7 +44,8 @@ public class UserInterface {
             System.out.println("2. Search for a movie");
             System.out.println("3. Edit a movie in the collection");
             System.out.println("4. Delete a movie in the collection");
-            System.out.println("5. Exit / View a list of the movies in the collection");
+            System.out.println("5. View a list of the movies in the collection");
+            System.out.println("6. Exit");
 
             String menuAction = scanner.next();
 
@@ -180,15 +184,31 @@ public class UserInterface {
                         System.out.println("No movie in the collection matches your search.");
                     }
                 }
-
             } else if (menuAction.equals("5")) {
+                scanner.nextLine();
+                viewing = true;
+                while (viewing) {
+                    System.out.println("Movies in your collection");
+                    collection.listMovies();
+                    System.out.println("Type 'exit' to return to the menu");
+                    System.out.println("Type '' to ''");
+                    String searchTerm = scanner.nextLine();
+
+                    if (searchTerm.equalsIgnoreCase("exit")) {
+                        viewing = false;
+                        break;
+                    }
+                    else if (searchTerm.equalsIgnoreCase("o")){
+
+                    }
+                }
+            } else if (menuAction.equals("6")) {
                 running = false;
             } else {
                 System.out.println("Invalid command.");
             }
 
-            System.out.println("Movies in your collection:");
-            collection.listMovies();
+
             collection.saveFile("samling.txt");
         }
     }
